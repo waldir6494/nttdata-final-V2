@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -25,27 +27,27 @@ public class CustomerController {
 
     @GetMapping(value = {"/customer"})
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody List<Customer> all() {
+    public @ResponseBody Flux<Customer> all() {
 
         return customerService.all();
     }
 
     @GetMapping(value = {"/customer/{id}"})
     @ResponseStatus(HttpStatus.OK)
-    public Customer show(@PathVariable long id) {
+    public Mono<Customer> show(@PathVariable long id) {
         return customerService.show(id);
     }
 
     @PostMapping("/customer")
     @ResponseStatus(HttpStatus.CREATED)
-    public Customer create(@RequestBody CustomerCreate customerCreated) {
-        Customer customer= this.customerService.save(customerCreated);
+    public Mono<Customer> create(@RequestBody CustomerCreate customerCreated) {
+        Mono<Customer> customer= this.customerService.save(customerCreated);
         return customer;
     }
 
-    @DeleteMapping("customer/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable long id) {
-        this.customerService.delete(id);
-    }
+//    @DeleteMapping("customer/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void delete(@PathVariable long id) {
+//        this.customerService.delete(id);
+//    }
 }

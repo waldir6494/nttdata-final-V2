@@ -4,6 +4,8 @@ import com.nttdata.app.customer.model.Customer;
 import com.nttdata.app.customer.model.TypeCustomer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.List;
 @Configuration
 public class ApplicationConfig {
     @Bean
-    public List<Customer> listCustomer(){
+    public Flux<Customer> listCustomer(){
 
         List<Customer> list = new ArrayList<>();
         //Customer customer1 = new Customer(1,"Waldir","Ortiz","45744477");
@@ -19,16 +21,27 @@ public class ApplicationConfig {
 
         //list.add(customer1);
         //list.add(customer2);
-        return list;
+
+        Flux<Customer> listFlux= Flux.fromIterable(list);
+        return listFlux;
 
     }
 
+//    @Bean
+//    public List<TypeCustomer> typeCustomer(){
+//        List<TypeCustomer> typeList = new ArrayList<>();
+//        typeList.add(new TypeCustomer(1,"Personal"));
+//        typeList.add(new TypeCustomer(2,"Empresarial"));
+//        return typeList;
+//
+//    }
     @Bean
-    public List<TypeCustomer> typeCustomer(){
+    public Flux<TypeCustomer> typeCustomer(){
         List<TypeCustomer> typeList = new ArrayList<>();
         typeList.add(new TypeCustomer(1,"Personal"));
         typeList.add(new TypeCustomer(2,"Empresarial"));
-        return typeList;
+        Flux<TypeCustomer> typeListFlux = Flux.fromIterable(typeList);
+        return typeListFlux;
 
     }
 }

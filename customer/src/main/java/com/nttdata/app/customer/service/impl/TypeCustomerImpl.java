@@ -4,22 +4,26 @@ import com.nttdata.app.customer.model.TypeCustomer;
 import com.nttdata.app.customer.service.ITypeCustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
 @Service
 public class TypeCustomerImpl implements ITypeCustomerService {
 
+
     @Autowired
-    public List<TypeCustomer> typeCustomer;
+    public Flux<TypeCustomer> typeCustomer;
+
 
     @Override
-    public TypeCustomer show(long id) {
-        return this.typeCustomer.stream().filter(typeCustomer -> typeCustomer.getId() == id).findFirst().get();
+    public Mono<TypeCustomer> show(long id) {
+        return this.typeCustomer.filter(typeCustomer -> typeCustomer.getId() == id).next();
     }
 
     @Override
-    public List<TypeCustomer> all() {
+    public Flux<TypeCustomer> all() {
         return this.typeCustomer;
     }
 }
