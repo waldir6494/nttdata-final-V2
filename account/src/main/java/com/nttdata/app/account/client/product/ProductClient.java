@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "service-product", url = "http://localhost:8082")
+//@FeignClient(name = "service-product", url = "http://localhost:8082")
+@FeignClient(name = "service-product")
 public interface ProductClient {
     @GetMapping("/api/limit/product/{id}")
     List<Limit> getFilterLimitProductFeign(@PathVariable long id);
