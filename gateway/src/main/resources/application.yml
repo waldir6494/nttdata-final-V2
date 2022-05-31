@@ -1,0 +1,40 @@
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+
+server:
+  port: 8085
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      routes:
+        - id: service-customer
+          uri: lb://service-customer
+          predicates:
+            - Path=/app-customer/**
+          filters:
+            - StripPrefix=1
+        - id: service-account
+          uri: lb://service-account
+          predicates:
+            - Path=/app-account/**
+          filters:
+            - StripPrefix=1
+        - id: service-product
+          uri: lb://service-product
+          predicates:
+            - Path=/app-product/**
+          filters:
+            - StripPrefix=1
+        - id: service-transaction
+          uri: lb://service-transaction
+          predicates:
+            - Path=/app-transaction/**
+          filters:
+            - StripPrefix=1
