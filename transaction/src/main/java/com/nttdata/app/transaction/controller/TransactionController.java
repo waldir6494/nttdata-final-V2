@@ -20,7 +20,18 @@ public class TransactionController {
     public Transaction deposit(@RequestBody TransactionCreate transaction) {
         return this.transactionService.deposit(transaction);
     }
-/*
+
+    @PostMapping("/transaction/withdrawal")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Transaction withdrawal(@RequestBody TransactionCreate transaction) {
+        return this.transactionService.withdrawal(transaction);
+    }
+    @GetMapping("/transaction/account/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Transaction> findByAccount(@PathVariable Long id) {
+        return this.transactionService.findByAccount(id);
+    }
+
     @GetMapping("/transaction/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Transaction show(@PathVariable long id) {
@@ -31,5 +42,5 @@ public class TransactionController {
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody List<Transaction> all() {
         return this.transactionService.all();
-    }*/
+    }
 }

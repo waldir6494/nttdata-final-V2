@@ -20,7 +20,6 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnore
     @ManyToOne  // Foreign Key
     @JoinColumn(name = "type_id")
     private TypeTransaction typeTransaction;

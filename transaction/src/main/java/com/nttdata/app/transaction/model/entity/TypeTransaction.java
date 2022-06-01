@@ -22,6 +22,4 @@ public class TypeTransaction {
     @Column(name = "name", length = 40, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "typeTransaction", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Transaction> transactions;
 }

@@ -10,11 +10,13 @@ public interface ITransactionService {
 
     Transaction deposit(TransactionCreate transactionCreate);
 
-    TransactionModel withdrawal(TransactionCreate transactionCreate);
+    Transaction withdrawal(TransactionCreate transactionCreate);
 
-    TransactionModel creditPayment(TransactionCreate transactionCreate);
+    TransactionModel paymentCredit(TransactionCreate transactionCreate);
 
     TransactionModel useCredit(TransactionCreate transactionCreate);
-    TransactionModel show(long id);
-    List<TransactionModel> all();
+    Transaction show(Long id);
+
+    List<Transaction> findByAccount(Long id);
+    List<Transaction> all();
 }
