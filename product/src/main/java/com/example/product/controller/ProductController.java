@@ -12,17 +12,17 @@ import java.util.List;
 @RequestMapping("/api")
 public class ProductController {
     @Autowired
-    private IProductService productService;
+    IProductService productService;
 
     @GetMapping(value = {"/product"})
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody List<Product> all() {
+    public List<Product> all(){
         return productService.all();
     }
-
     @GetMapping(value = {"/product/{id}"})
     @ResponseStatus(HttpStatus.OK)
-    public Product show(@PathVariable long id) {
+    public Product show(@PathVariable Long id){
         return productService.show(id);
     }
+
 }

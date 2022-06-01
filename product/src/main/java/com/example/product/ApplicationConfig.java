@@ -17,35 +17,35 @@ import java.util.List;
 public class ApplicationConfig {
     @Autowired
     CustomerClient customerClient;
-    @Bean
-    public List<TypeProduct> typeProduct(){
-        List<TypeProduct> typeProduct = new ArrayList<>();
-        typeProduct.add(new TypeProduct(1, "Débito", false));
-        typeProduct.add(new TypeProduct(2, "Crédito", true));
-        return typeProduct;
-    }
+//    @Bean
+//    public List<TypeProduct> typeProduct(){
+//        List<TypeProduct> typeProduct = new ArrayList<>();
+//        typeProduct.add(new TypeProduct(1, "Débito", false));
+//        typeProduct.add(new TypeProduct(2, "Crédito", true));
+//        return typeProduct;
+//    }
 
-    @Bean
-    public List<Product> products(){
-        List<Product> productList = new ArrayList<>();
-        productList.add(new Product(1, "Ahorro", false,false,true, 0, 10,null, this.typeProduct().get(0)));
-        productList.add(new Product(2, "Cuenta corriente", false, true,false, 0, null, null, this.typeProduct().get(0)));
-        productList.add(new Product(3, "Plazo fijo", false, true,true, 0, 1,new Date(), this.typeProduct().get(0)));
-        return productList;
-    }
-
-    @Bean
-    public List<Limit> limits(){
-        List<Limit> limitList = new ArrayList<>();
-        TypeCustomer personal = this.customerClient.getTypeCustomerFeign(1);
-        TypeCustomer empresarial = this.customerClient.getTypeCustomerFeign(2);
-        limitList.add(new Limit(1, this.products().get(0), personal, true, 1));
-        limitList.add(new Limit(2, this.products().get(1), personal, true, 1));
-        limitList.add(new Limit(3, this.products().get(2), personal, false, 0));
-
-        limitList.add(new Limit(3, this.products().get(1), empresarial, false, 0));
-        return limitList;
-    }
+//    @Bean
+//    public List<Product> products(){
+//        List<Product> productList = new ArrayList<>();
+//        productList.add(new Product(1, "Ahorro", false,false,true, 0, 10,null, this.typeProduct().get(0)));
+//        productList.add(new Product(2, "Cuenta corriente", false, true,false, 0, null, null, this.typeProduct().get(0)));
+//        productList.add(new Product(3, "Plazo fijo", false, true,true, 0, 1,new Date(), this.typeProduct().get(0)));
+//        return productList;
+//    }
+//
+//    @Bean
+//    public List<Limit> limits(){
+//        List<Limit> limitList = new ArrayList<>();
+//        TypeCustomer personal = this.customerClient.getTypeCustomerFeign(1);
+//        TypeCustomer empresarial = this.customerClient.getTypeCustomerFeign(2);
+//        limitList.add(new Limit(1, this.products().get(0), personal, true, 1));
+//        limitList.add(new Limit(2, this.products().get(1), personal, true, 1));
+//        limitList.add(new Limit(3, this.products().get(2), personal, false, 0));
+//
+//        limitList.add(new Limit(3, this.products().get(1), empresarial, false, 0));
+//        return limitList;
+//    }
 
     /*@Bean
     public List<Debit> listDebit(){
