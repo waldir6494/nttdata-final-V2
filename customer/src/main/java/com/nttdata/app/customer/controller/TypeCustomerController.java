@@ -1,6 +1,6 @@
 package com.nttdata.app.customer.controller;
 
-import com.nttdata.app.customer.model.TypeCustomer;
+import com.nttdata.app.customer.model.entity.TypeCustomer;
 import com.nttdata.app.customer.service.ITypeCustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
