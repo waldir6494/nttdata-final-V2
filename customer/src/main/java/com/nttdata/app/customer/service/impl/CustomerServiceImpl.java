@@ -1,14 +1,13 @@
 package com.nttdata.app.customer.service.impl;
 
-import com.nttdata.app.customer.model.Customer;
+import com.nttdata.app.customer.model.entity.Customer;
 import com.nttdata.app.customer.model.CustomerCreate;
-import com.nttdata.app.customer.model.TypeCustomer;
+import com.nttdata.app.customer.model.entity.TypeCustomer;
 import com.nttdata.app.customer.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @Service
 public class CustomerServiceImpl implements ICustomerService {

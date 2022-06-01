@@ -1,7 +1,6 @@
 package com.nttdata.app.customer.service;
 
-import com.nttdata.app.customer.model.Customer;
-import com.nttdata.app.customer.model.TypeCustomer;
+import com.nttdata.app.customer.model.entity.TypeCustomer;
 
 import java.util.List;
 

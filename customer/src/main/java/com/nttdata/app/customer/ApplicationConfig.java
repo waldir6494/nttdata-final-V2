@@ -1,7 +1,7 @@
 package com.nttdata.app.customer;
 
-import com.nttdata.app.customer.model.Customer;
-import com.nttdata.app.customer.model.TypeCustomer;
+import com.nttdata.app.customer.model.entity.Customer;
+import com.nttdata.app.customer.model.entity.TypeCustomer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,8 +26,8 @@ public class ApplicationConfig {
     @Bean
     public List<TypeCustomer> typeCustomer(){
         List<TypeCustomer> typeList = new ArrayList<>();
-        typeList.add(new TypeCustomer(1,"Personal"));
-        typeList.add(new TypeCustomer(2,"Empresarial"));
+        typeList.add(new TypeCustomer(1L,"Personal"));
+        typeList.add(new TypeCustomer(2L,"Empresarial"));
         return typeList;
 
     }
