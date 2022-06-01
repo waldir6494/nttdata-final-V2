@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class TypeTransaction {
+public class TypeTransactionModel {
     private Long id;
     private String name;
 }

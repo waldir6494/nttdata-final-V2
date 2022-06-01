@@ -1,7 +1,7 @@
 package com.nttdata.app.transaction;
 
-import com.nttdata.app.transaction.model.Transaction;
-import com.nttdata.app.transaction.model.TypeTransaction;
+import com.nttdata.app.transaction.model.TransactionModel;
+import com.nttdata.app.transaction.model.TypeTransactionModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,14 +12,14 @@ import java.util.List;
 public class ApplicationConfig {
 
     @Bean
-    public List<Transaction> transactions(){
-        List<Transaction> Transactions = new ArrayList<>();
+    public List<TransactionModel> transactions(){
+        List<TransactionModel> Transactions = new ArrayList<>();
         return Transactions;
     }
 
     @Bean
-    public List<TypeTransaction> typeTransactions(){
-        List<TypeTransaction> typeTransactions = new ArrayList<>();
+    public List<TypeTransactionModel> typeTransactions(){
+        List<TypeTransactionModel> typeTransactions = new ArrayList<>();
         return typeTransactions;
     }
 

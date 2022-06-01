@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Transaction {
+public class TransactionModel {
     private Long id;
-    private TypeTransaction typeTransaction;
+    private TypeTransactionModel typeTransaction;
     private Float amount;
     private Account account;
 }
