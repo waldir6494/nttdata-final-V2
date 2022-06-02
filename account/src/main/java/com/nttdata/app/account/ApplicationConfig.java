@@ -1,6 +1,6 @@
 package com.nttdata.app.account;
 
-import com.nttdata.app.account.model.Account;
+import com.nttdata.app.account.model.entity.Account;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

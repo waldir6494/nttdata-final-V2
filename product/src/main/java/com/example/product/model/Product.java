@@ -32,9 +32,6 @@ public class Product {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dayEspecificDate;
 
-//    @OneToMany(mappedBy = "product",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-//    private List<Limit> limits;
-
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name="type_product_id")

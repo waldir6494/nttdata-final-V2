@@ -1,4 +1,4 @@
-package com.nttdata.app.account.model;
+package com.nttdata.app.account.model.entity;
 
 import com.nttdata.app.account.client.customer.model.Customer;
 import com.nttdata.app.account.client.product.model.Product;
@@ -7,18 +7,24 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
+@Entity
+@Table(name = "account")
 public class Account {
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Float balance;
-    private Float credit;
+    @Column(name = "current_movement")
     private Integer currentMovement;
-    private Product product;
-    private List<Customer> customers;
-    private List<Customer> signatories;
+    @Column(name = "product_id")
+    private Integer product;
+    @Column(name = "customer_id")
+    private Integer customer;  //Cliente Personal o Empresarial
 }

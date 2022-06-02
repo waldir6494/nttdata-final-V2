@@ -20,6 +20,4 @@ public class TypeProduct {
     String name;
     @Column(name = "is_credit")
     Boolean isCredit;
-//    @OneToMany(mappedBy = "TypeProduct",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-//    List<Product> products;
 }

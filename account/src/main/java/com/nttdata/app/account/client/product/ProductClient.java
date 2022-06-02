@@ -12,9 +12,9 @@ import java.util.List;
 @FeignClient(name = "service-product")
 public interface ProductClient {
     @GetMapping("/api/limit/product/{id}")
-    List<Limit> getFilterLimitProductFeign(@PathVariable long id);
+    List<Limit> getFilterLimitProductFeign(@PathVariable Long id);
 
     @GetMapping("/api/product/{id}")
-    Product getProductFeign(@PathVariable long id);
+    Product getProductFeign(@PathVariable Long id);
 
 }

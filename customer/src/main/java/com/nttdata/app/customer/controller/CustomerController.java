@@ -37,9 +37,9 @@ public class CustomerController {
 
     @PostMapping("/customer")
     @ResponseStatus(HttpStatus.CREATED)
-    public Customer create(@RequestBody CustomerCreate customerCreated) {
-        Customer customer= this.customerService.save(customerCreated);
-        return customer;
+    public Customer create(@RequestBody CustomerCreate customer) {
+
+        return customerService.save(customer);
     }
 
     @DeleteMapping("customer/{id}")
