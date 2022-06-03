@@ -1,4 +1,5 @@
 package com.nttdata.app.customer.controller;
+import com.nttdata.app.customer.model.CustomerAccount;
 import com.nttdata.app.customer.model.entity.Customer;
 import com.nttdata.app.customer.model.CustomerCreate;
 import com.nttdata.app.customer.service.ICustomerService;
@@ -35,6 +36,11 @@ public class CustomerController {
         return customerService.show(id);
     }
 
+    @GetMapping(value = {"/customer/account/{id}"})
+    @ResponseStatus(HttpStatus.OK)
+    public CustomerAccount showCustomerACCOUNT(@PathVariable long id) {
+        return customerService.showCustomerAccount(id);
+    }
     @PostMapping("/customer")
     @ResponseStatus(HttpStatus.CREATED)
     public Customer create(@RequestBody CustomerCreate customer) {

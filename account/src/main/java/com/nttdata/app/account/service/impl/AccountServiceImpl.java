@@ -5,6 +5,7 @@ import com.nttdata.app.account.client.customer.model.Customer;
 import com.nttdata.app.account.client.product.ProductClient;
 import com.nttdata.app.account.client.product.model.Limit;
 import com.nttdata.app.account.client.product.model.Product;
+import com.nttdata.app.account.model.AccountProductModel;
 import com.nttdata.app.account.model.entity.Account;
 import com.nttdata.app.account.model.CreateAccount;
 import com.nttdata.app.account.repository.AccountRepository;
@@ -72,6 +73,19 @@ public class AccountServiceImpl implements IAccountService {
     @Override
     public Account show(Long id) {
         return accountRepository.findById(id).get();
+    }
+
+    public List<AccountProductModel> showAccountCustomer(Integer id){
+        List<Account> account = accountRepository.findByCustomer(id);
+        return account.stream().map( accountModel -> new AccountProductModel(
+                    accountModel.getId(),
+                    accountModel.getBalance(),
+                    accountModel.getCredit(),
+                    accountModel.getCurrentMovement(),
+                    accountModel.getCustomer(),
+                    this.productClient.getProductFeign(Long.valueOf(accountModel.getProduct()))
+            )
+        ).collect(Collectors.toList());
     }
     
 //

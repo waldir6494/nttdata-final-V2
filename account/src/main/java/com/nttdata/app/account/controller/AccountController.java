@@ -1,5 +1,6 @@
 package com.nttdata.app.account.controller;
 
+import com.nttdata.app.account.model.AccountProductModel;
 import com.nttdata.app.account.model.entity.Account;
 import com.nttdata.app.account.model.CreateAccount;
 import com.nttdata.app.account.service.IAccountService;
@@ -33,6 +34,12 @@ public class AccountController {
     @ResponseStatus(HttpStatus.CREATED)
     public Account show(@PathVariable Long id) {
         return accountService.show(id);
+    }
+
+    @GetMapping("/customer/account/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<AccountProductModel>  showCustomerAccount(@PathVariable Integer id) {
+        return accountService.showAccountCustomer(id);
     }
 
     @PutMapping("/account/{id}")
