@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -74,18 +75,16 @@ public class AccountServiceImpl implements IAccountService {
     }
     
 //
-//    @Override
-//    public CreateAccount update(CreateAccount account, Long id) {
-//
-//        this.listAccounts.stream().filter(accountAux -> accountAux.getId() == id)
-//                .forEach(account1 -> {
-//                    account1.setBalance(account.getBalance());
-//                    account1.setCredit(account.getCredit());
-//                    account1.setCurrentMovement(account.getCurrentMovement());
-//                });
-//
-//        return account;
-//    }
+    @Override
+    public Account update(CreateAccount account, Long id) {
+        return accountRepository.findById(id).flatMap(accountUpdate -> {
+            accountUpdate.setId(id);
+            accountUpdate.setBalance(account.getBalance());
+            accountUpdate.setCredit(account.getCredit());
+            accountUpdate.setCurrentMovement(account.getCurrent_movement());
+            return Optional.of(accountRepository.save(accountUpdate));
+        }).get();
+    }
 //
 //    private void accountVerify(Customer customer, CreateAccount createAccount) throws RequirementFailedException{
 //

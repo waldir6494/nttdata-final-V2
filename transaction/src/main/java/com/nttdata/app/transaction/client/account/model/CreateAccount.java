@@ -12,7 +12,7 @@ public class CreateAccount {
     private Integer product_id;
     private Float balance;
     private Float credit;
-    private Integer currentMovement;
+    private Integer current_movement;
 
 
 }

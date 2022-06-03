@@ -34,12 +34,10 @@ public class AccountController {
     public Account show(@PathVariable Long id) {
         return accountService.show(id);
     }
-//
-//    @PutMapping("/account/{id}")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public CreateAccount update(@RequestBody CreateAccount account, @PathVariable Long id) {
-//        LOGGER.info("update de controllerrrrrrrrrrrr");
-//        return this.accountService.update(account, id);
-//
-//    }
+
+    @PutMapping("/account/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Account update(@RequestBody CreateAccount account, @PathVariable Long id) {
+        return this.accountService.update(account, id);
+    }
 }

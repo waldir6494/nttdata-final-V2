@@ -1,13 +1,11 @@
 package com.example.product.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,10 +27,10 @@ public class Product {
     private Integer amountMaintenance;
     @Column(name = "max_movement",length = 3)
     private Integer maxMovement;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date dayEspecificDate;
 
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToOne
     @JoinColumn(name="type_product_id")
     private TypeProduct TypeProduct;

@@ -9,5 +9,5 @@ public interface IAccountService {
     Account create(CreateAccount account);
     List<Account> all();
     Account show(Long id);
-//    CreateAccount update(CreateAccount account, Long id);
+    Account update(CreateAccount account, Long id);
 }
