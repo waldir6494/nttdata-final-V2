@@ -26,6 +26,18 @@ public class TransactionController {
     public Transaction withdrawal(@RequestBody TransactionCreate transaction) {
         return this.transactionService.withdrawal(transaction);
     }
+
+    @PostMapping("/transaction/credit/use")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Transaction useCredit(@RequestBody TransactionCreate transaction) {
+        return this.transactionService.useCredit(transaction);
+    }
+
+    @PostMapping("/transaction/credit/pay")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Transaction paymentCredit(@RequestBody TransactionCreate transaction) {
+        return this.transactionService.paymentCredit(transaction);
+    }
     @GetMapping("/transaction/account/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<Transaction> findByAccount(@PathVariable Long id) {

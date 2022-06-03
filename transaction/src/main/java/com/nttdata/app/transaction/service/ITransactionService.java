@@ -12,9 +12,9 @@ public interface ITransactionService {
 
     Transaction withdrawal(TransactionCreate transactionCreate);
 
-    TransactionModel paymentCredit(TransactionCreate transactionCreate);
+    Transaction paymentCredit(TransactionCreate transactionCreate);
 
-    TransactionModel useCredit(TransactionCreate transactionCreate);
+    Transaction useCredit(TransactionCreate transactionCreate);
     Transaction show(Long id);
 
     List<Transaction> findByAccount(Long id);

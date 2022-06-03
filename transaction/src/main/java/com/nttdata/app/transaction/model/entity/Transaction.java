@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "transactions")
@@ -26,6 +27,9 @@ public class Transaction {
 
     @Column(name = "amount", nullable = false)
     private Float amount = 0f;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateTransaction;
 
     @Column(name = "account_id", nullable = false)
     private Long accountId;
