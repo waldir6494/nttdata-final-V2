@@ -1,8 +1,6 @@
 package com.nttdata.app.transaction.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +10,10 @@ import java.util.List;
 @Entity
 @Table(name = "type_transactions")
 @NoArgsConstructor
-@Data
+@Setter
+@Getter
+@ToString
+@Builder
 public class TypeTransaction {
 
     @Id

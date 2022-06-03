@@ -1,15 +1,15 @@
 package com.example.product.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
+@ToString
+@Builder
 @Entity
 @Table(name = "type_product")
 public class TypeProduct {
