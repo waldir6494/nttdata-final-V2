@@ -25,6 +25,7 @@ public class Account {
     private Integer currentMovement;
     @Column(name = "product_id")
     private Integer product;
+    private Float credit;
     @Column(name = "customer_id")
     private Integer customer;  //Cliente Personal o Empresarial
 }

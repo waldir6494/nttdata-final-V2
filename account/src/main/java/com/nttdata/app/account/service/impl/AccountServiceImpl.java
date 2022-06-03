@@ -52,6 +52,7 @@ public class AccountServiceImpl implements IAccountService {
                             .product(account.getProduct_id())
                             .currentMovement(account.getCurrent_movement())
                             .balance(account.getBalance())
+                            .credit(account.getCredit())
                             .build();
                     auxAccount =accountRepository.save(newAccount);
                 }

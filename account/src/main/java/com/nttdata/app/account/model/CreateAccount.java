@@ -12,5 +12,6 @@ public class CreateAccount {
     private Integer product_id;
     private Float balance;
     private Integer current_movement;
+    private Float credit;
 
 }
