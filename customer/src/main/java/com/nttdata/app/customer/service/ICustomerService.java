@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface ICustomerService {
     Customer save(CustomerCreate customer);
-    Customer show(long id);
+    Customer show(Long id);
     List<Customer> all();
     Customer update();
-    void delete(long id);
+    void delete(Long id);
 }

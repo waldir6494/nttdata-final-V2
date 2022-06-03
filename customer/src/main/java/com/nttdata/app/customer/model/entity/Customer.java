@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
+@Builder
 public class Customer {
 
     @Id
@@ -24,10 +25,9 @@ public class Customer {
     @Column(name = "surname", length = 50, nullable = false)
     private String surname;
 
-    @Column(name = "dni", length = 8, nullable = false)
+    @Column(name = "dni", length = 12, nullable = false)
     private String dni;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "type_id")
     private TypeCustomer type;

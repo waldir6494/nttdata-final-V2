@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public class Product {
-    private long id;
+    private Long id;
     private String name;
     private boolean maintenance;
     private boolean movementDayEspecific;

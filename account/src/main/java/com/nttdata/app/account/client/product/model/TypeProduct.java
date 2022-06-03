@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class TypeProduct {
-    long id;
+    Long id;
     String name;
     Boolean isCredit;
 }

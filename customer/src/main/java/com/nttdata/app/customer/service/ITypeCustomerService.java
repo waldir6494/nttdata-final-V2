@@ -5,6 +5,6 @@ import com.nttdata.app.customer.model.entity.TypeCustomer;
 import java.util.List;
 
 public interface ITypeCustomerService {
-    TypeCustomer show(long id);
+    TypeCustomer show(Long id);
     List<TypeCustomer> all();
 }

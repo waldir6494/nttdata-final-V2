@@ -24,7 +24,6 @@ public class Limit {
     @Column(name = "max_account")
     Integer maxAccount;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "product_id")
     Product product;
