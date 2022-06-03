@@ -8,11 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class CreateAccount {
-    private Long customer_id;
+    private Integer customer_id;
     private Integer product_id;
     private Float balance;
+    private Integer current_movement;
     private Float credit;
-    private Integer currentMovement;
-
 
 }

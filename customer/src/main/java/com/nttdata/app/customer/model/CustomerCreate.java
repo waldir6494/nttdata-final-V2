@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class CustomerCreate {
-    private long id;
+    private Long id;
     private String name;
     private String surname;
     private String dni;
-    private long type_id;
+    private Long type_id;
 }

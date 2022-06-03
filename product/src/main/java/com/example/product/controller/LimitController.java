@@ -13,24 +13,23 @@ import java.util.List;
 public class LimitController {
 
     @Autowired
-    private ILimitService limitService;
+    ILimitService limitService;
 
     @GetMapping("/limit")
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody List<Limit> all() {
-
+    public List<Limit> all(){
         return limitService.all();
     }
-
     @GetMapping("/limit/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Limit show(@PathVariable long id) {
+    public Limit show(@PathVariable Long id){
         return limitService.show(id);
     }
 
     @GetMapping("/limit/product/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Limit> productFilter(@PathVariable long id) {
-        return limitService.productFilter(id);
+    public List<Limit> getLimitByProduct(@PathVariable Long id){
+        return  limitService.productFilter(id);
     }
+
 }

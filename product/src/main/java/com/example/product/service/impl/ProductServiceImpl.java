@@ -1,5 +1,6 @@
 package com.example.product.service.impl;
 import com.example.product.model.Product;
+import com.example.product.repository.ProductRepository;
 import com.example.product.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,21 +10,15 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements IProductService {
     @Autowired
-    public List<Product> products;
-    @Override
-    public Product show(long id) {
-        try {
-            return this.products.stream()
-                    .filter(customer -> customer.getId() == id)
-                    .findFirst()
-                    .get();
-        } catch (Exception e) {
-            return new Product();
-        }
-    }
+    ProductRepository productRepository;
 
     @Override
-    public List all() {
-        return this.products;
+    public List<Product> all(){
+        return productRepository.findAll();
     }
+    @Override
+    public Product show(Long id){
+        return productRepository.findById(id).get();
+    }
+
 }

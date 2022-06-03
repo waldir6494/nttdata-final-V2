@@ -5,7 +5,7 @@ import com.example.product.model.Limit;
 import java.util.List;
 
 public interface ILimitService {
-    Limit show(long id);
+    Limit show(Long id);
     List<Limit> all();
-    List<Limit> productFilter(long id);
+    List<Limit> productFilter(Long id);
 }

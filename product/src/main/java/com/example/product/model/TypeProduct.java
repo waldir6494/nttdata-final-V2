@@ -1,14 +1,23 @@
 package com.example.product.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
+@ToString
+@Builder
+@Entity
+@Table(name = "type_product")
 public class TypeProduct {
-    long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+    @Column(name = "name",length = 30)
     String name;
+    @Column(name = "is_credit")
     Boolean isCredit;
 }

@@ -1,56 +1,59 @@
 package com.nttdata.app.customer.service.impl;
 
-import com.nttdata.app.customer.model.Customer;
+import com.nttdata.app.customer.client.account.AccountClient;
+import com.nttdata.app.customer.model.CustomerAccount;
+import com.nttdata.app.customer.model.entity.Customer;
 import com.nttdata.app.customer.model.CustomerCreate;
-import com.nttdata.app.customer.model.TypeCustomer;
+import com.nttdata.app.customer.model.entity.TypeCustomer;
+import com.nttdata.app.customer.repository.CustomerRepository;
+import com.nttdata.app.customer.repository.TypeCustomerRepository;
 import com.nttdata.app.customer.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @Service
-public class CustomerServiceImpl implements ICustomerService {
+public class CustomerServiceImpl implements ICustomerService { ;
     @Autowired
-    public List<Customer> customers;
-    @Autowired
-    public List<TypeCustomer> typeCustomer;
-    public static int idCount = 1;
+    CustomerRepository customerRepository;
 
+    @Autowired
+    AccountClient accountClient;
+    @Autowired
+    TypeCustomerRepository typeCustomerRepository;
     @Override
-    public Customer save(CustomerCreate customerCreate) {
-        //Random random = new Random();
-        //customer.setId(random.nextLong(100000 - 0) + 0);
-        long auxId = CustomerServiceImpl.idCount++;
-        //customer.setId(auxId);
-        Customer customerAux = new Customer(auxId, customerCreate.getName(),
-                customerCreate.getSurname(),
-                customerCreate.getDni(),
-                typeCustomer.stream().filter(typeCustomer1 -> typeCustomer1.getId() == customerCreate.getType_id())
-                        .findFirst()
-                        .get());
-        //this.customers.add(customer);
-        this.customers.add(customerAux);
-        return customerAux;
+    public Customer save(CustomerCreate customer) {
+        Customer newCustomer=Customer.builder().
+                name(customer.getName()).
+                surname(customer.getSurname()).
+                dni(customer.getDni()).
+                type(typeCustomerRepository.findById(customer.getType_id()).get())
+                .build();
+        return customerRepository.save(newCustomer);
     }
 
     @Override
-    public Customer show(long id) {
-        try {
-            return this.customers.stream()
-                    .filter(customer -> customer.getId() == id)
-                    .findFirst()
-                    .get();
-        } catch (Exception e) {
-            return new Customer();
-        }
+    public Customer show(Long id) {
+        return customerRepository.findById(id).get();
+    }
 
+    @Override
+    public CustomerAccount showCustomerAccount(Long id) {
+        Customer customer = customerRepository.findById(id).get();
+        return new CustomerAccount(
+                customer.getId(),
+                customer.getName(),
+                customer.getSurname(),
+                customer.getDni(),
+                customer.getType(),
+                accountClient.getCustomerAccountFeign(customer.getId())
+        );
     }
 
     @Override
     public List<Customer> all() {
-        return this.customers;
+        return customerRepository.findAll();
     }
 
     @Override
@@ -60,7 +63,7 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public void delete(long id) {
-        this.customers.removeIf(customer -> customer.getId() == id);
+    public void delete(Long id) {
+        customerRepository.deleteById(id);
     }
 }

@@ -11,5 +11,5 @@ import java.util.List;
 @FeignClient(name = "service-customer")
 public interface CustomerClient {
     @GetMapping("/api/customer/{id}")
-    Customer getCustomerFeign(@PathVariable long id);
+    Customer getCustomerFeign(@PathVariable Long id);
 }

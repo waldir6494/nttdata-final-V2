@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Limit {
-    long id;
+    Long id;
     Product product;
-    TypeCustomer typeCustomer;
+    Integer typeCustomer;
     Boolean limitAccount;
     Integer maxAccount;
 }
